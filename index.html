@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <a href="/" class="flex items-center">
-    <img src="assets/logo.png" alt="Treken Solutions" class="h-12 md:h-16 w-auto">
-</a>
+    <title>Treken Solutions</title>
     
-    <meta name="description" content="Treken Solutions provides audit-ready IPM Pest Control, ISA-standard Tree Care, and ISO-compliant Manpower services for Bangalore's industrial hubs. Serving Peenya, Bidadi, and Electronic City.">
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <meta name="description" content="Treken Solutions: Providing audit-ready IPM, ISA-standard Tree Care, and ISO-compliant Manpower for Bangalore's industrial sectors.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -22,7 +22,7 @@
                         forest: '#1B4D3E',
                         earth: '#5D4037',
                         gold: '#C5A059',
-                        softGray: '#F8F9FA'
+                        slate: { 850: '#1e293b' }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -34,300 +34,345 @@
     </script>
 
     <style>
-        .glass-nav { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); }
-        .hero-video-overlay { background: linear-gradient(75deg, rgba(27, 77, 62, 0.95) 0%, rgba(27, 77, 62, 0.6) 100%); }
-        .mobile-menu { transition: transform 0.3s ease-in-out; transform: translateX(100%); }
+        .glass-nav { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(15px); }
+        .hero-overlay { background: linear-gradient(90deg, rgba(27, 77, 62, 0.95) 0%, rgba(27, 77, 62, 0.4) 100%); }
+        .mobile-menu { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
         .mobile-menu.active { transform: translateX(0); }
-        .text-justify-custom { text-align: justify; text-justify: inter-word; }
+        .content-justify { text-align: justify; text-justify: inter-word; }
+        .logo-hover { transition: transform 0.3s ease; }
+        .logo-hover:hover { transform: scale(1.05); }
     </style>
 </head>
-<body class="bg-white text-slate-800 leading-relaxed overflow-x-hidden">
+<body class="bg-white text-slate-900 leading-relaxed font-sans overflow-x-hidden">
 
-    <nav class="fixed w-full z-[100] glass-nav border-b border-gray-100">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 md:w-12 md:h-12 bg-forest flex items-center justify-center rounded-lg shadow-lg rotate-3 group-hover:rotate-0 transition-transform">
-                    <i class="fas fa-shield-halved text-white text-xl md:text-2xl"></i>
-                </div>
-                <div>
-                    <span class="block text-xl md:text-2xl font-extrabold tracking-tighter text-forest leading-none">TREKEN</span>
+    <nav class="fixed w-full z-[100] glass-nav border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="/" class="flex items-center space-x-2 logo-hover">
+                <img src="logo.png" alt="Treken Solutions" class="h-14 md:h-16 w-auto object-contain">
+                <div class="hidden sm:block border-l border-gray-200 pl-4">
+                    <span class="block text-xl font-extrabold tracking-tighter text-forest leading-none">TREKEN</span>
                     <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-gold">Solutions</span>
                 </div>
             </a>
 
-            <div class="hidden lg:flex items-center space-x-8 text-xs font-bold uppercase tracking-wider">
+            <div class="hidden lg:flex items-center space-x-10 text-[11px] font-extrabold uppercase tracking-[0.2em] text-slate-600">
                 <a href="#methodology" class="hover:text-gold transition">Methodology</a>
-                <a href="#sectors" class="hover:text-gold transition">Sectors</a>
+                <a href="#industrial" class="hover:text-gold transition">Industrial Sectors</a>
                 <a href="#services" class="hover:text-gold transition">Technical Verticals</a>
                 <a href="#compliance" class="hover:text-gold transition">Compliance</a>
-                <a href="#contact" class="bg-forest text-white px-6 py-3 rounded-sm hover:bg-earth transition shadow-xl">Request Site Audit</a>
+                <a href="#contact" class="bg-forest text-white px-8 py-4 rounded-sm hover:bg-gold hover:text-forest transition shadow-lg">Audit Request</a>
             </div>
 
-            <button id="menu-btn" class="lg:hidden text-forest text-2xl focus:outline-none">
+            <button id="menu-btn" class="lg:hidden text-forest text-2xl p-2 focus:outline-none">
                 <i class="fas fa-bars-staggered"></i>
             </button>
         </div>
 
-        <div id="mobile-menu" class="fixed inset-0 bg-forest z-[150] mobile-menu lg:hidden flex flex-col p-10">
-            <button id="menu-close" class="text-white text-3xl self-end mb-10"><i class="fas fa-times"></i></button>
-            <div class="flex flex-col space-y-8 text-white text-xl font-bold uppercase tracking-widest">
-                <a href="#methodology" class="mobile-link">Methodology</a>
-                <a href="#sectors" class="mobile-link">Sectors</a>
-                <a href="#services" class="mobile-link">Verticals</a>
+        <div id="mobile-menu" class="fixed inset-0 bg-forest z-[150] mobile-menu lg:hidden flex flex-col justify-center items-center">
+            <button id="menu-close" class="absolute top-8 right-8 text-white text-4xl"><i class="fas fa-times"></i></button>
+            <div class="flex flex-col space-y-10 text-center text-white text-2xl font-bold uppercase tracking-widest">
+                <a href="#methodology" class="mobile-link">The Treken Method</a>
+                <a href="#industrial" class="mobile-link">Sectors</a>
+                <a href="#services" class="mobile-link">Services</a>
                 <a href="#compliance" class="mobile-link">Compliance</a>
-                <a href="#contact" class="bg-gold text-center py-4 rounded mobile-link">Contact Us</a>
+                <a href="#contact" class="text-gold border-2 border-gold px-8 py-3 rounded mobile-link">Contact</a>
             </div>
         </div>
     </nav>
 
-    <header class="relative h-screen flex items-center pt-20 overflow-hidden bg-slate-900">
-        <div class="absolute inset-0 opacity-50">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Modern Bangalore Infrastructure">
+    <header class="relative h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Industrial Excellence">
         </div>
-        <div class="absolute inset-0 hero-video-overlay"></div>
+        <div class="absolute inset-0 hero-overlay z-10"></div>
         
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-4xl" data-aos="fade-right">
-                <h1 class="text-4xl md:text-7xl font-heading font-extrabold text-white mb-6 leading-tight">
-                    Engineered Excellence in <br><span class="text-gold italic">Asset Protection.</span>
+        <div class="container mx-auto px-6 relative z-20">
+            <div class="max-w-4xl" data-aos="fade-up" data-aos-duration="1500">
+                <h1 class="text-5xl md:text-8xl font-heading font-extrabold text-white mb-6 leading-none">
+                    Data-Driven <br><span class="text-gold italic">Asset Resilience.</span>
                 </h1>
-                <p class="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed font-light border-l-4 border-gold pl-6 max-w-2xl">
-                    Treken Solutions provides mission-critical <b>Integrated Pest Management</b>, ISA-certified <b>Arboriculture</b>, and <b>Technical Staffing</b> tailored for Bangalore's high-compliance industrial belts.
+                <p class="text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed font-light border-l-8 border-gold pl-8 max-w-3xl">
+                    Engineering safe industrial environments through scientific **Integrated Pest Management**, certified **Arboriculture**, and **Technical Manpower** Governance.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#services" class="bg-gold text-white px-8 py-4 font-bold uppercase tracking-widest hover:scale-105 transition-transform shadow-2xl text-sm">Our Technical Capabilities</a>
+                <div class="flex flex-wrap gap-6">
+                    <a href="#services" class="bg-gold text-white px-12 py-5 font-bold uppercase tracking-widest hover:bg-white hover:text-forest transition-all shadow-2xl">Technical Overview</a>
                     <div class="flex items-center text-white space-x-4">
-                        <span class="h-[1px] w-8 bg-gold"></span>
-                        <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest opacity-80">Serving Peenya | Yelahanka | Bagalur | Devanahalli</span>
+                        <span class="h-[1px] w-16 bg-gold"></span>
+                        <span class="text-xs font-bold uppercase tracking-[0.4em] opacity-80">Serving the Bangalore Industrial Corridor</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="sectors" class="py-24 bg-white">
+    <section id="methodology" class="py-32 bg-slate-50">
         <div class="container mx-auto px-6">
-            <div class="grid lg:grid-cols-3 gap-12">
-                <div data-aos="fade-up">
-                    <h2 class="text-forest font-extrabold text-3xl mb-6">Pharma & Life Sciences</h2>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4 text-justify-custom">
-                        In manufacturing zones like Bommasandra and Electronic City, pharmaceutical facilities face extreme regulatory pressure. Treken’s IPM protocols are designed specifically to meet <b>USFDA and MHRA</b> standards. We utilize non-volatile gel baits and pheromone monitoring systems that ensure zero cross-contamination risk in sterile zones.
-                    </p>
-                    <ul class="text-xs font-bold text-gold space-y-2 uppercase">
-                        <li><i class="fas fa-microscope mr-2"></i> Sterile Zone Protocols</li>
-                        <li><i class="fas fa-file-shield mr-2"></i> Audit-Ready Logbooks</li>
-                    </ul>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <h2 class="text-forest font-extrabold text-3xl mb-6">Warehousing & Logistics</h2>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4 text-justify-custom">
-                        The North Bangalore corridor (Devanahalli/Bagalur) is the heart of logistics. We provide high-intensity rodent management and bird proofing for massive warehouse footprints. Our "Buffer Zone" strategy creates a multi-layered defense line, stopping infestations before they reach the loading docks.
-                    </p>
-                    <ul class="text-xs font-bold text-gold space-y-2 uppercase">
-                        <li><i class="fas fa-truck-ramp-box mr-2"></i> Rodent Barrier Engineering</li>
-                        <li><i class="fas fa-dove mr-2"></i> Advanced Bird Netting</li>
-                    </ul>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="400">
-                    <h2 class="text-forest font-extrabold text-3xl mb-6">IT Parks & Campuses</h2>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4 text-justify-custom">
-                        For Yelahanka and Manyata-based tech parks, campus aesthetics and employee safety are paramount. Our certified arborists manage "Hazard Trees" while our property teams ensure the facility operates like a well-oiled machine, adhering to strict SLAs that reflect your corporate reputation.
-                    </p>
-                    <ul class="text-xs font-bold text-gold space-y-2 uppercase">
-                        <li><i class="fas fa-building-user mr-2"></i> SLA-Driven Maintenance</li>
-                        <li><i class="fas fa-tree mr-2"></i> Aesthetic Canopy Management</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="methodology" class="py-24 bg-softGray">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center mb-16">
-                <h2 class="text-sm font-bold text-gold uppercase tracking-[0.4em] mb-4">The Science of Treken</h2>
-                <h3 class="text-4xl font-heading font-extrabold text-forest">The 5-Stage Technical Lifecycle</h3>
-            </div>
-            
-            
-
-            <div class="grid md:grid-cols-5 gap-4 mt-12">
-                <div class="p-6 bg-white shadow-sm hover:shadow-xl transition group" data-aos="zoom-in">
-                    <span class="text-gold font-black text-3xl block mb-4 group-hover:scale-110 transition">01</span>
-                    <h4 class="font-bold text-forest mb-2">Detection</h4>
-                    <p class="text-xs text-gray-500">Forensic analysis of entry points and biological pressures.</p>
-                </div>
-                <div class="p-6 bg-white shadow-sm hover:shadow-xl transition group" data-aos="zoom-in" data-aos-delay="100">
-                    <span class="text-gold font-black text-3xl block mb-4 group-hover:scale-110 transition">02</span>
-                    <h4 class="font-bold text-forest mb-2">Exclusion</h4>
-                    <p class="text-xs text-gray-500">Structural modifications to prevent ingress.</p>
-                </div>
-                <div class="p-6 bg-white shadow-sm hover:shadow-xl transition group" data-aos="zoom-in" data-aos-delay="200">
-                    <span class="text-gold font-black text-3xl block mb-4 group-hover:scale-110 transition">03</span>
-                    <h4 class="font-bold text-forest mb-2">Elimination</h4>
-                    <p class="text-xs text-gray-500">Targeted, low-toxic biological interventions.</p>
-                </div>
-                <div class="p-6 bg-white shadow-sm hover:shadow-xl transition group" data-aos="zoom-in" data-aos-delay="300">
-                    <span class="text-gold font-black text-3xl block mb-4 group-hover:scale-110 transition">04</span>
-                    <h4 class="font-bold text-forest mb-2">Validation</h4>
-                    <p class="text-xs text-gray-500">Post-treatment audit to confirm success rates.</p>
-                </div>
-                <div class="p-6 bg-white shadow-sm hover:shadow-xl transition group" data-aos="zoom-in" data-aos-delay="400">
-                    <span class="text-gold font-black text-3xl block mb-4 group-hover:scale-110 transition">05</span>
-                    <h4 class="font-bold text-forest mb-2">Reporting</h4>
-                    <p class="text-xs text-gray-500">Digitized compliance logs for audit readiness.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-24">
-        <div class="container mx-auto px-6 space-y-32">
-            <div class="flex flex-col lg:flex-row items-center gap-16" data-aos="fade-up">
-                <div class="lg:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80" class="rounded-2xl shadow-2xl" alt="Arboriculture">
-                </div>
-                <div class="lg:w-1/2">
-                    <h3 class="text-4xl font-bold text-forest mb-6 italic">ISA-Standard Arboriculture</h3>
-                    <p class="text-gray-600 mb-8 leading-relaxed text-justify-custom">
-                        In Bangalore, trees are more than greenery; they are legal and environmental assets. Treken Solutions provides <b>Visual Tree Assessments (VTA)</b> and surgical pruning to mitigate risk during high-wind seasons. Our certified arborists utilize soil de-compaction and root-zone remediation to save heritage trees on your corporate campus, increasing property value and safety simultaneously.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="border-l-2 border-gold pl-4">
-                            <h5 class="font-bold text-forest">Tree Risk Index</h5>
-                            <p class="text-xs text-gray-400">Scientific hazard evaluation.</p>
-                        </div>
-                        <div class="border-l-2 border-gold pl-4">
-                            <h5 class="font-bold text-forest">Surgery & Bracing</h5>
-                            <p class="text-xs text-gray-400">Structural integrity restoration.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="compliance" class="py-24 bg-forest text-white">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row gap-16">
+            <div class="flex flex-col lg:flex-row gap-20 items-start">
                 <div class="lg:w-1/2" data-aos="fade-right">
-                    <h2 class="text-gold font-bold uppercase tracking-widest mb-4">Statutory Governance</h2>
-                    <h3 class="text-4xl font-bold mb-8">100% Audit-Ready Workforce.</h3>
-                    <p class="text-gray-300 mb-8 text-justify-custom">
-                        The biggest risk in B2B service procurement is non-compliance. Treken Solutions guarantees 100% adherence to Karnataka Labor Laws. We manage all PF, ESI, and LWF contributions, providing you with a clean audit trail. Our personnel are not just workers; they are trained professionals who understand Safety (PPE), Conduct, and Site Specific SOPs.
-                    </p>
-                    <div class="flex space-x-6">
-                        <div class="text-center">
-                            <i class="fas fa-file-contract text-gold text-3xl mb-2"></i>
-                            <p class="text-[10px] uppercase font-bold">PF/ESI Compliant</p>
-                        </div>
-                        <div class="text-center">
-                            <i class="fas fa-certificate text-gold text-3xl mb-2"></i>
-                            <p class="text-[10px] uppercase font-bold">ISO Standards</p>
-                        </div>
-                        <div class="text-center">
-                            <i class="fas fa-shield-virus text-gold text-3xl mb-2"></i>
-                            <p class="text-[10px] uppercase font-bold">HSE Focused</p>
+                    <h2 class="text-gold font-bold uppercase tracking-[0.4em] mb-6">The Treken Standard</h2>
+                    <h3 class="text-5xl font-heading font-extrabold text-forest mb-8">Bio-Security through <br>Scientific Rigor.</h3>
+                    <div class="space-y-8 text-gray-600 content-justify text-lg">
+                        <p>Most facility services react to problems. Treken Solutions <b>engineers them out.</b> Our methodology is rooted in the <i>Precautionary Principle</i>, focusing on high-barrier exclusion and biological surveillance before chemical intervention is ever considered.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                            <div class="bg-white p-8 border-t-4 border-gold shadow-sm">
+                                <h4 class="font-bold text-forest mb-3">IPM Logic Model</h4>
+                                <p class="text-sm">We utilize HACCP-compliant monitoring to identify pest pressure indices. Our threshold-based interventions minimize chemical exposure for your staff.</p>
+                            </div>
+                            <div class="bg-white p-8 border-t-4 border-forest shadow-sm">
+                                <h4 class="font-bold text-forest mb-3">Arboricultural VTA</h4>
+                                <p class="text-sm">Our "Visual Tree Assessment" analyzes structural bio-mechanics to prevent campus failures during Bangalore's intense monsoon gusts.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="lg:w-1/2 bg-white/5 p-10 rounded-xl border border-white/10" data-aos="fade-left">
-                    <h4 class="text-gold font-bold mb-6 italic">The Treken Compliance Dashboard</h4>
-                    <p class="text-sm text-gray-400 mb-6">Our clients receive a monthly "Site Integrity Report" which includes:</p>
-                    <ul class="space-y-4 text-sm">
-                        <li class="flex items-center"><i class="fas fa-check-double text-gold mr-3"></i> Real-time Pest Sighting Analysis</li>
-                        <li class="flex items-center"><i class="fas fa-check-double text-gold mr-3"></i> Arborist Health Audit Logs</li>
-                        <li class="flex items-center"><i class="fas fa-check-double text-gold mr-3"></i> Manpower Attendance & KYC Verification</li>
-                        <li class="flex items-center"><i class="fas fa-check-double text-gold mr-3"></i> Chemical Consumption & MSDS Updates</li>
+                <div class="lg:w-1/2 relative" data-aos="zoom-in">
+                    <div class="bg-forest rounded-3xl p-12 text-white relative z-10">
+                        <h4 class="text-gold font-bold uppercase mb-8">Service Lifecycle</h4>
+                        <ul class="space-y-6">
+                            <li class="flex items-center gap-6 border-b border-white/10 pb-4">
+                                <span class="text-4xl font-black text-white/20">01</span>
+                                <div><h5 class="font-bold">Initial Forensic Audit</h5><p class="text-xs opacity-60">Identification of bio-vulnerabilities.</p></div>
+                            </li>
+                            <li class="flex items-center gap-6 border-b border-white/10 pb-4">
+                                <span class="text-4xl font-black text-white/20">02</span>
+                                <div><h5 class="font-bold">Barrier Engineering</h5><p class="text-xs opacity-60">Structural proofing and entry mitigation.</p></div>
+                            </li>
+                            <li class="flex items-center gap-6 border-b border-white/10 pb-4">
+                                <span class="text-4xl font-black text-white/20">03</span>
+                                <div><h5 class="font-bold">Active Suppression</h5><p class="text-xs opacity-60">Biological and mechanical controls.</p></div>
+                            </li>
+                            <li class="flex items-center gap-6">
+                                <span class="text-4xl font-black text-white/20">04</span>
+                                <div><h5 class="font-bold">SLA Validation</h5><p class="text-xs opacity-60">Monthly audit-ready compliance logs.</p></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-gold/10 rounded-full blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="industrial" class="py-32">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-4xl mx-auto mb-20">
+                <h2 class="text-gold font-bold uppercase tracking-widest mb-4">Market Focus</h2>
+                <h3 class="text-4xl md:text-5xl font-heading font-extrabold text-forest">Engineered for Complexity.</h3>
+                <p class="mt-6 text-gray-500">We don't serve everyone. We serve the mission-critical hubs where failure is not an option.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-0 border border-gray-100 shadow-2xl rounded-2xl overflow-hidden">
+                <div class="p-12 border-r border-gray-100 hover:bg-forest hover:text-white transition-all group duration-500">
+                    <i class="fas fa-microchip text-4xl text-gold mb-8"></i>
+                    <h4 class="text-2xl font-bold mb-4">Tech & R&D Hubs</h4>
+                    <p class="text-sm opacity-70 mb-8 leading-relaxed">Serving **Yelahanka and Manyata** IT parks. We ensure clean-room standards and campus aesthetics that reflect your global brand value.</p>
+                    <ul class="text-[10px] font-black uppercase tracking-widest space-y-2 group-hover:text-gold">
+                        <li><i class="fas fa-caret-right mr-2"></i> Sterile Environment IPM</li>
+                        <li><i class="fas fa-caret-right mr-2"></i> Landscape Risk Mitigation</li>
+                    </ul>
+                </div>
+                <div class="p-12 border-r border-gray-100 hover:bg-forest hover:text-white transition-all group duration-500">
+                    <i class="fas fa-vial-circle-check text-4xl text-gold mb-8"></i>
+                    <h4 class="text-2xl font-bold mb-4">Pharma & Life Sciences</h4>
+                    <p class="text-sm opacity-70 mb-8 leading-relaxed">Operating in **Peenya and Bidadi**. Full compliance with USFDA/MHRA audit requirements for pest exclusion and hygiene.</p>
+                    <ul class="text-[10px] font-black uppercase tracking-widest space-y-2 group-hover:text-gold">
+                        <li><i class="fas fa-caret-right mr-2"></i> FDA-Ready Documentation</li>
+                        <li><i class="fas fa-caret-right mr-2"></i> Non-Toxic Biological Control</li>
+                    </ul>
+                </div>
+                <div class="p-12 hover:bg-forest hover:text-white transition-all group duration-500">
+                    <i class="fas fa-warehouse text-4xl text-gold mb-8"></i>
+                    <h4 class="text-2xl font-bold mb-4">Logistics & FMCG</h4>
+                    <p class="text-sm opacity-70 mb-8 leading-relaxed">Securing massive footprints in **Devanahalli and Bagalur**. High-intensity rodent management and bird proofing.</p>
+                    <ul class="text-[10px] font-black uppercase tracking-widest space-y-2 group-hover:text-gold">
+                        <li><i class="fas fa-caret-right mr-2"></i> Bulk Storage Protection</li>
+                        <li><i class="fas fa-caret-right mr-2"></i> Structural Pest Exclusion</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24">
+    <section class="py-32 bg-white">
         <div class="container mx-auto px-6">
-            <div class="bg-softGray rounded-3xl p-8 md:p-20 shadow-2xl flex flex-col lg:flex-row gap-12">
-                <div class="lg:w-1/2">
-                    <h2 class="text-4xl font-heading font-extrabold text-forest mb-6 italic">Secure Your Asset.</h2>
-                    <p class="text-gray-600 mb-10">Schedule a technical walkthrough with our team at your facility in Bangalore.</p>
-                    <div class="space-y-6">
-                        <a href="tel:+919448932637" class="flex items-center space-x-4 group">
-                            <div class="w-12 h-12 bg-white flex items-center justify-center text-forest shadow rounded-full group-hover:bg-gold transition">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <span class="font-bold">+91 9448932637</span>
-                        </a>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-white flex items-center justify-center text-forest shadow rounded-full">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <span class="font-bold">info@treken.in</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-white flex items-center justify-center text-forest shadow rounded-full">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <span class="font-bold">KR Puram, Bengaluru</span>
+            <div class="flex flex-col lg:flex-row-reverse gap-20 items-center">
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80" class="rounded-3xl shadow-2xl" alt="Scientific Arboriculture">
+                        <div class="absolute -bottom-10 -left-10 bg-gold p-10 text-white shadow-2xl">
+                            <span class="block text-4xl font-bold italic">ISA</span>
+                            <span class="text-xs uppercase font-bold tracking-widest">Standard Certified</span>
                         </div>
                     </div>
                 </div>
-                <div class="lg:w-1/2">
-                    <form class="space-y-4">
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <input type="text" placeholder="Full Name" class="w-full p-4 border rounded focus:border-gold outline-none">
-                            <input type="text" placeholder="Company Name" class="w-full p-4 border rounded focus:border-gold outline-none">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <h2 class="text-gold font-bold uppercase tracking-widest mb-4">Vertical II</h2>
+                    <h3 class="text-5xl font-heading font-extrabold text-forest mb-8 italic">The Science of Tree Care.</h3>
+                    <div class="prose text-gray-600 space-y-6 content-justify">
+                        <p>Campus greenery in Bangalore is a massive liability if managed poorly. Treken Solutions provides <b>Visual Tree Assessments (VTA)</b> using biological indicators to identify structural decay before it leads to failure. Our surgical pruning preserves heritage trees while clearing utility lines and building facades.</p>
+                        <ul class="grid grid-cols-2 gap-6 text-sm font-bold text-forest mt-8">
+                            <li><i class="fas fa-check text-gold mr-3"></i> Soil De-compaction</li>
+                            <li><i class="fas fa-check text-gold mr-3"></i> Crown Thinning</li>
+                            <li><i class="fas fa-check text-gold mr-3"></i> Root Zone Remediation</li>
+                            <li><i class="fas fa-check text-gold mr-3"></i> Emergency Risk Assessment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section id="compliance" class="py-32 bg-forest text-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-gold font-bold uppercase tracking-[0.4em] mb-6">Governance & Compliance</h2>
+                    <h3 class="text-5xl font-heading font-extrabold mb-8 leading-tight">Zero Legal Friction. <br>100% Transparency.</h3>
+                    <p class="text-gray-300 mb-10 text-lg content-justify">For the HR and Procurement teams, Treken Solutions acts as a shield. We maintain 100% adherence to Karnataka Labor Laws, managing all PF, ESI, and statutory registrations internally. Your audit trail is always pristine, with digital access to all compliance documents 24/7.</p>
+                    <div class="flex gap-10">
+                        <div class="text-center">
+                            <div class="w-20 h-20 border border-gold/30 rounded-full flex items-center justify-center mb-4 mx-auto hover:bg-gold transition">
+                                <i class="fas fa-balance-scale text-2xl text-gold"></i>
+                            </div>
+                            <span class="text-[10px] uppercase font-bold opacity-60">Legal Compliance</span>
                         </div>
-                        <input type="email" placeholder="Corporate Email" class="w-full p-4 border rounded focus:border-gold outline-none">
-                        <select class="w-full p-4 border rounded outline-none">
-                            <option>Service Segment</option>
-                            <option>Pharma/Industrial IPM</option>
+                        <div class="text-center">
+                            <div class="w-20 h-20 border border-gold/30 rounded-full flex items-center justify-center mb-4 mx-auto hover:bg-gold transition">
+                                <i class="fas fa-user-check text-2xl text-gold"></i>
+                            </div>
+                            <span class="text-[10px] uppercase font-bold opacity-60">KYC Verified</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 border border-gold/30 rounded-full flex items-center justify-center mb-4 mx-auto hover:bg-gold transition">
+                                <i class="fas fa-file-invoice-dollar text-2xl text-gold"></i>
+                            </div>
+                            <span class="text-[10px] uppercase font-bold opacity-60">PF/ESI Adherent</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-12 rounded-3xl" data-aos="fade-left">
+                    <h4 class="text-2xl font-bold mb-8 italic text-gold">The Technical Service Level Agreement (SLA)</h4>
+                    <ul class="space-y-6 text-sm">
+                        <li class="flex items-start gap-4">
+                            <i class="fas fa-circle-check text-gold mt-1"></i>
+                            <span><b>Monthly Analytical Reporting:</b> Data trends on pest sightings and biological pressures.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i class="fas fa-circle-check text-gold mt-1"></i>
+                            <span><b>MSDS Digital Access:</b> Instant access to Material Safety Data Sheets for all products used.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i class="fas fa-circle-check text-gold mt-1"></i>
+                            <span><b>Safety Incident Tracking:</b> Real-time logs of PPE compliance and safety drills.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i class="fas fa-circle-check text-gold mt-1"></i>
+                            <span><b>Biometric Attendance:</b> Verified manpower presence for every shift.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32">
+        <div class="container mx-auto px-6">
+            <div class="bg-slate-900 rounded-[3rem] p-12 md:p-24 shadow-3xl text-white flex flex-col lg:flex-row gap-20 relative overflow-hidden">
+                <div class="lg:w-1/2 relative z-10">
+                    <h2 class="text-5xl font-heading font-extrabold mb-8 italic">Secure Your <br><span class="text-gold">Site Integrity.</span></h2>
+                    <p class="text-gray-400 mb-12 text-lg">Schedule a comprehensive site audit with our technical team today.</p>
+                    <div class="space-y-8">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 bg-forest flex items-center justify-center rounded-2xl text-gold shadow-xl">
+                                <i class="fas fa-phone-alt text-2xl"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase opacity-50 font-bold tracking-widest">Regional HQ Hotline</span>
+                                <a href="tel:+919945350909" class="text-2xl font-bold hover:text-gold transition">+91 9945350909</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 bg-forest flex items-center justify-center rounded-2xl text-gold shadow-xl">
+                                <i class="fas fa-location-dot text-2xl"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase opacity-50 font-bold tracking-widest">Office Location</span>
+                                <span class="text-xl font-bold italic">Kaggadasapura, Bengaluru - 93</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 relative z-10">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input type="text" placeholder="Full Name" class="w-full bg-white/5 border border-white/10 p-5 rounded-xl focus:border-gold outline-none transition">
+                            <input type="text" placeholder="Company" class="w-full bg-white/5 border border-white/10 p-5 rounded-xl focus:border-gold outline-none transition">
+                        </div>
+                        <input type="email" placeholder="Corporate Email Address" class="w-full bg-white/5 border border-white/10 p-5 rounded-xl focus:border-gold outline-none transition">
+                        <select class="w-full bg-white text-slate-900 p-5 rounded-xl focus:border-gold outline-none transition appearance-none">
+                            <option>Service Vertical Required</option>
+                            <option>Integrated Pest Management</option>
                             <option>Certified Tree Care</option>
-                            <option>Technical Staffing</option>
+                            <option>Technical Staffing Audit</option>
                         </select>
-                        <textarea placeholder="Tell us about your facility (Location & Challenges)" class="w-full p-4 h-32 border rounded outline-none"></textarea>
-                        <button class="w-full bg-forest text-white py-5 font-bold uppercase tracking-widest hover:bg-gold transition duration-500 shadow-xl">Submit Audit Request</button>
+                        <textarea placeholder="Specific Challenges or Facility Hub (e.g., Peenya, Manyata)" class="w-full bg-white/5 border border-white/10 p-5 h-40 rounded-xl focus:border-gold outline-none transition"></textarea>
+                        <button class="w-full bg-gold text-white py-6 rounded-xl font-black uppercase tracking-widest hover:bg-white hover:text-forest transition shadow-2xl">Initialize Technical Walkthrough</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-forest text-white/50 py-12 border-t border-white/5">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs">
-            <div class="mb-4 md:mb-0">
-                <span class="font-bold text-white text-lg">TREKEN SOLUTIONS</span><br>
-                &copy; 2025 All Rights Reserved.
+    <footer class="bg-white py-20 border-t border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center border-b border-gray-100 pb-12 mb-12">
+                <div class="flex items-center space-x-4 mb-8 md:mb-0">
+                    <img src="logo.png" class="h-16 w-auto" alt="Logo">
+                    <div>
+                        <span class="block text-2xl font-black text-forest leading-none">TREKEN</span>
+                        <span class="text-[10px] uppercase font-bold text-gold tracking-widest">Solutions</span>
+                    </div>
+                </div>
+                <div class="flex gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
+                    <a href="#" class="hover:text-gold transition">Safety Code</a>
+                    <a href="#" class="hover:text-gold transition">HSE Policy</a>
+                    <a href="#" class="hover:text-gold transition">Ethics</a>
+                </div>
             </div>
-            <div class="flex space-x-6 font-bold uppercase">
-                <a href="#" class="hover:text-gold transition">Safety Policy</a>
-                <a href="#" class="hover:text-gold transition">Ethics Code</a>
-                <a href="#" class="hover:text-gold transition">Sitemap</a>
+            <div class="text-center text-[10px] text-gray-400 font-bold uppercase tracking-[0.3em]">
+                &copy; 2025 Treken Solutions.
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1200, once: true });
 
-        // Mobile Menu Toggle Logic
+        // Mobile Menu Logic
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuClose = document.getElementById('menu-close');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        menuBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
-        menuClose.addEventListener('click', () => mobileMenu.classList.remove('active'));
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
-        });
+        menuBtn.onclick = () => mobileMenu.classList.add('active');
+        menuClose.onclick = () => mobileMenu.classList.remove('active');
+        mobileLinks.forEach(link => link.onclick = () => mobileMenu.classList.remove('active'));
 
-        // Nav Shadow on Scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            nav.classList.toggle('shadow-2xl', window.scrollY > 50);
-        });
+        // Nav Transparency
+        window.onscroll = () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-2xl', 'py-2');
+                nav.classList.remove('py-3');
+            } else {
+                nav.classList.remove('shadow-2xl', 'py-2');
+                nav.classList.add('py-3');
+            }
+        };
     </script>
 </body>
 </html>
