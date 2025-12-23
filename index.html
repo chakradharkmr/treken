@@ -27,15 +27,6 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         heading: ['Montserrat', 'sans-serif'],
-                    },
-                    animation: {
-                        'shimmer': 'shimmer 3s infinite linear',
-                    },
-                    keyframes: {
-                        shimmer: {
-                            '0%': { transform: 'translateX(-100%)' },
-                            '100%': { transform: 'translateX(100%)' }
-                        }
                     }
                 }
             }
@@ -45,27 +36,46 @@
     <style>
         .glass-nav { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(15px); }
         
-        /* NEW HERO ANIMATIONS */
-        @keyframes kenburns {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
+        /* PROFESSIONAL CINEMATIC ANIMATIONS */
+        @keyframes cinematicZoom {
+            0% { transform: scale(1.0); }
+            50% { transform: scale(1.12); }
+            100% { transform: scale(1.0); }
         }
 
-        @keyframes drift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes fluidOverlay {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
         }
 
-        .hero-video-effect {
-            animation: kenburns 20s ease-in-out infinite;
+        @keyframes lensFlare {
+            0% { opacity: 0.3; transform: translate(-20%, -20%) scale(1); }
+            50% { opacity: 0.5; transform: translate(10%, 10%) scale(1.1); }
+            100% { opacity: 0.3; transform: translate(-20%, -20%) scale(1); }
         }
 
-        .hero-overlay-animated {
-            background: linear-gradient(-45deg, rgba(27, 77, 62, 0.96), rgba(27, 77, 62, 0.7), rgba(197, 160, 89, 0.2), rgba(27, 77, 62, 0.96));
-            background-size: 400% 400%;
-            animation: drift 15s ease infinite;
+        .animate-cinematic {
+            animation: cinematicZoom 30s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        .animate-fluid-gradient {
+            background: linear-gradient(135deg, 
+                rgba(27, 77, 62, 0.98) 0%, 
+                rgba(27, 77, 62, 0.8) 40%, 
+                rgba(197, 160, 89, 0.15) 70%, 
+                rgba(27, 77, 62, 0.98) 100%);
+            background-size: 300% 300%;
+            animation: fluidOverlay 20s ease-in-out infinite;
+        }
+
+        .flare-layer {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(197, 160, 89, 0.1) 0%, transparent 50%);
+            animation: lensFlare 15s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 15;
         }
 
         /* Existing Styles */
@@ -113,33 +123,44 @@
         </div>
     </nav>
 
-    <header class="relative h-screen flex items-center pt-20 overflow-hidden">
+    <header class="relative h-screen flex items-center pt-20 overflow-hidden bg-forest">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80" 
-                 class="w-full h-full object-cover hero-video-effect" alt="Industrial Excellence">
+                 class="w-full h-full object-cover animate-cinematic opacity-60" alt="Industrial Excellence">
         </div>
         
-        <div class="absolute inset-0 hero-overlay-animated z-10 opacity-90"></div>
+        <div class="absolute inset-0 animate-fluid-gradient z-10"></div>
+        
+        <div class="flare-layer"></div>
         
         <div class="container mx-auto px-6 relative z-20">
-            <div class="max-w-4xl" data-aos="fade-up" data-aos-duration="1500">
-                <h1 class="text-5xl md:text-8xl font-heading font-extrabold text-white mb-6 leading-none">
-                    Data-Driven <br><span class="text-gold italic">Asset Resilience.</span>
+            <div class="max-w-4xl" data-aos="fade-up" data-aos-duration="2000">
+                <h1 class="text-5xl md:text-8xl font-heading font-extrabold text-white mb-6 leading-none tracking-tight">
+                    Data-Driven <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold via-white to-gold bg-[length:200%_auto] animate-[shimmer_5s_linear_infinite] italic">
+                        Asset Resilience.
+                    </span>
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed font-light border-l-8 border-gold pl-8 max-w-3xl">
+                
+                <p class="text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed font-light border-l-4 border-gold/50 pl-8 max-w-3xl">
                     Engineering safe industrial environments through scientific Integrated Pest Management, Certified Arboriculture, and Manpower Governance.
                 </p>
-                <div class="flex flex-wrap gap-6">
-                    <a href="#services" class="bg-gold text-white px-12 py-5 font-bold uppercase tracking-widest hover:bg-white hover:text-forest transition-all shadow-2xl overflow-hidden group relative">
+                
+                <div class="flex flex-wrap gap-6 items-center">
+                    <a href="#services" class="group relative bg-gold text-white px-12 py-5 font-bold uppercase tracking-[0.2em] transition-all duration-500 hover:bg-white hover:text-forest shadow-[0_0_30px_rgba(197,160,89,0.3)]">
                         <span class="relative z-10">Technical Overview</span>
-                        <div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-full transition-transform duration-700"></div>
+                        <div class="absolute inset-0 w-0 group-hover:w-full transition-all duration-500 bg-white"></div>
                     </a>
-                    <div class="flex items-center text-white space-x-4">
-                        <span class="h-[1px] w-16 bg-gold"></span>
-                        <span class="text-xs font-bold uppercase tracking-[0.4em] opacity-80 animate-pulse">Serving the Bangalore Industrial Corridor</span>
+                    <div class="flex items-center text-white/60 space-x-4">
+                        <span class="h-px w-12 bg-gold/50"></span>
+                        <span class="text-[10px] font-bold uppercase tracking-[0.5em]">Bangalore Industrial Corridor</span>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 opacity-40">
+            <div class="w-px h-12 bg-gradient-to-b from-gold to-transparent animate-bounce"></div>
         </div>
     </header>
 
