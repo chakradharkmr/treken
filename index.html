@@ -32,16 +32,30 @@
             }
         }
     </script>
+<style>
+    /* ... existing styles ... */
+    
+    /* Looping Ken Burns Effect */
+    @keyframes kenburns {
+        0% { transform: scale(1) translate(0, 0); }
+        50% { transform: scale(1.1) translate(-1%, -1%); }
+        100% { transform: scale(1) translate(0, 0); }
+    }
 
-    <style>
-        .glass-nav { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(15px); }
-        .hero-overlay { background: linear-gradient(90deg, rgba(27, 77, 62, 0.95) 0%, rgba(27, 77, 62, 0.4) 100%); }
-        .mobile-menu { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
-        .mobile-menu.active { transform: translateX(0); }
-        .content-justify { text-align: justify; text-justify: inter-word; }
-        .logo-hover { transition: transform 0.3s ease; }
-        .logo-hover:hover { transform: scale(1.05); }
-    </style>
+    /* Pulsing Light Effect for the Gold accents */
+    @keyframes gold-pulse {
+        0%, 100% { opacity: 0.8; filter: brightness(100%); }
+        50% { opacity: 1; filter: brightness(130%); }
+    }
+
+    .animate-kenburns {
+        animation: kenburns 20s ease-in-out infinite;
+    }
+    
+    .animate-gold-pulse {
+        animation: gold-pulse 4s ease-in-out infinite;
+    }
+</style>
 </head>
 <body class="bg-white text-slate-900 leading-relaxed font-sans overflow-x-hidden">
 
